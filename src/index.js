@@ -25,6 +25,8 @@ class Square extends React.Component {
     }
 
     handleClick(i) {
+        // Immutability Is Important
+        // .slice() operator to create a copy of the squares array
         const squares = this.state.squares.slice();
         squares[i] = 'X';
         this.setState({squares: squares});
