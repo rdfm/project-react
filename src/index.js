@@ -2,21 +2,31 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class Square extends React.Component {
-    render() {
-      return (
-        // <button className="square" onClick={function() { alert('click'); }}>
-        <button 
-            className="square" 
-            onClick={() => this.props.onClick()}
-        >
-          {this.props.value}
+// class Square extends React.Component {
+//     render() {
+//       return (
+//         // <button className="square" onClick={function() { alert('click'); }}>
+//         <button 
+//             className="square" 
+//             onClick={() => this.props.onClick()}
+//         >
+//           {this.props.value}
+//         </button>
+//       );
+//     }
+// }
+
+function Square(props){
+    return (
+        // onClick={() => this.props.onClick()} to a shorter onClick={props.onClick} 
+        // Note the lack of parentheses on both sides.
+        <button className="square" onClick={props.onClick}>
+            {props.value}
         </button>
-      );
-    }
-  }
+    );
+}
   
-  class Board extends React.Component {
+class Board extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -66,28 +76,27 @@ class Square extends React.Component {
         </div>
       );
     }
-  }
+}
   
-  class Game extends React.Component {
+class Game extends React.Component {
     render() {
-      return (
+        return (
         <div className="game">
-          <div className="game-board">
+            <div className="game-board">
             <Board />
-          </div>
-          <div className="game-info">
+            </div>
+            <div className="game-info">
             <div>{/* status */}</div>
             <ol>{/* TODO */}</ol>
-          </div>
+            </div>
         </div>
-      );
+        );
     }
-  }
+}
   
-  // ========================================
-  
-  ReactDOM.render(
+// ========================================
+
+ReactDOM.render(
     <Game />,
     document.getElementById('root')
-  );
-  
+);
